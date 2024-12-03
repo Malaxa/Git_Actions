@@ -1,4 +1,4 @@
-name: build-test-depoly
+name: build-test-deploy
 on: push
 jobs:
   build:
@@ -13,3 +13,20 @@ jobs:
           node-version: '20.x'
       - run: npm install
       - run: npm run build
+
+  test: 
+    needs: build
+    runs-on: ubuntu-latest
+  
+ build:
+    runs-on: ubuntu-latest
+
+    steps:
+      -name: checkout repo
+        uses: actions/action@v4
+      -name: use node.js
+        uses: actins/setup-node@v4
+        with:
+          node-version: '20.x'
+      - run: npm install
+      - run: npm test
