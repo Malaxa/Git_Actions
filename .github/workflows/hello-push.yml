@@ -1,0 +1,17 @@
+# 1 component
+name: hello-world
+
+#2 trigger
+on: push
+
+# 3 jobs
+jobs: 
+  hello-world-job:
+
+    #runner
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: check out repository code
+        uses: actions/checkout@v4
+      - run: echo "$(cat hello_world.txt)"
